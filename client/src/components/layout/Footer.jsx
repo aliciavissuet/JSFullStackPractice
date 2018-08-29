@@ -5,7 +5,7 @@ export default class Footer extends React.Component {
         return (
             <div>
                 <footer className="bg-dark text-white mt-5 p-4 text-center">
-                    an app by alicia v
+                    made by alicia
                 </footer>
             </div>
         )

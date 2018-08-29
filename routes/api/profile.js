@@ -179,7 +179,7 @@ router.post('/experience', passport.authenticate('jwt', {session:false}), (req, 
                 to:req.body.to,
                 current:req.body.current,
                 description:req.body.description
-            }
+            };
 
             //add to exp array
             profile.experience.unshift(newExp);
@@ -208,13 +208,13 @@ router.post('/experience', passport.authenticate('jwt', {session:false}), (req, 
                  to:req.body.to,
                  current:req.body.current,
                  description:req.body.description
-             }
+             };
 
              profile.education.unshift(newEdu);
              profile.save().then(profile => res.json(profile));
          })
 
- })
+ });
 
 // @route   get api/profile/experience/:exp_id
 // @desc    delete experience from profile
@@ -256,7 +256,7 @@ router.delete('/education/:edu_id', passport.authenticate('jwt', {session:false}
             })
             .catch(err => res.status(404).json(err))
     }
-)
+);
 
 // @route   delete api/profile
 // @desc    delete user profile
@@ -269,6 +269,6 @@ router.delete('/', passport.authenticate('jwt', {session:false}), (req, res)=>{
             .then(() =>res.json({success:true}))
 
     }
-)
+);
 
 module.exports = router;
