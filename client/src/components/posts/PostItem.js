@@ -59,7 +59,7 @@ class PostItem extends React.Component {
                             <i className="text-secondary fas fa-thumbs-down"></i>
                         </button>
                         <Link to={`/post/${post._id}`} className="btn btn-info mr-1">
-                            Comments
+                            Comments: {post.comments.length}
                         </Link>
                             {post.user === auth.user.id ? (
                                 <button

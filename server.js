@@ -7,12 +7,13 @@ const path = require('path');
 const users = require('./routes/api/users');
 const profile = require('./routes/api/profile');
 const posts = require('./routes/api/posts');
+const aacgrids = require('./routes/api/aacgrids');
 
 const app = express();
 
 //Body parser middleware
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 //DB config
 const db = require('./config1/keys').mongoURI;
@@ -34,6 +35,7 @@ require('./config1/passport')(passport);
 app.use('/api/users', users);
 app.use('/api/profile', profile);
 app.use('/api/posts', posts);
+app.use('/api/aacgrids', aacgrids);
 
 //server static assets if in production
 if(process.env.NODE_ENV === 'production'){
