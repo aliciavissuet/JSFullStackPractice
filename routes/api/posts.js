@@ -120,7 +120,7 @@ router.post('/comment/:id', passport.authenticate('jwt', {session:false}), (req,
                 name:req.body.name,
                 avatar:req.body.avatar,
                 user:req.user.id,
-            }
+            };
             post.comments.unshift(newComment);
             post.save().then(post => res.json(post))
         })

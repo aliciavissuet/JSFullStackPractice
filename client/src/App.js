@@ -28,6 +28,9 @@ import Profile from "./components/profile/Profile";
 import NotFound from "./components/not-found/NotFound";
 import Posts from "./components/posts/Posts";
 import Post from "./components/post/Post";
+import GridForm from "./components/grids/GridForm";
+import Grid from "./components/grid/Grid";
+import AddWord from "./components/grid/AddWord";
 
 //check for token
 if(localStorage.jwtToken){
@@ -85,6 +88,15 @@ class App extends Component {
                     </Switch>
                     <Switch>
                         <PrivateRoute exact path="/post/:id" component={Post}/>
+                    </Switch>
+                    <Switch>
+                        <PrivateRoute exact path="/create-communication-board" component={GridForm}/>
+                    </Switch>
+                    <Switch>
+                        <PrivateRoute exact path="/grid/:id" component={Grid}/>
+                    </Switch>
+                    <Switch>
+                        <PrivateRoute exact path="/add-word" component={AddWord}/>
                     </Switch>
                     <Route exact path="/not-found" component={NotFound} />
 

@@ -3,15 +3,18 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getCurrentProfile, deleteAccount} from "../../actions/profileActions";
+import {getGrids} from "../../actions/gridActions";
 import Spinner from '../common/Spinner';
 import ProfileActions from './ProfileActions';
 import Experience from './Experience';
 import Education from './Education';
+import Grids from './Grids';
 
 
 class Dashboard extends React.Component {
     componentDidMount (){
         this.props.getCurrentProfile();
+        this.props.getGrids();
     }
 
     onDeleteClick (e) {
@@ -22,6 +25,9 @@ class Dashboard extends React.Component {
 
         const {user} = this.props.auth;
         const {profile, loading} = this.props.profile;
+        const {grids} = this.props.grids;
+        // const grids2 = grids.filter(grid => grid.user.id === user._id)
+
 
         let dashboardContent;
         if (profile === null || loading) {
@@ -33,6 +39,7 @@ class Dashboard extends React.Component {
                     <div>
                         <p className="lead text-muted"> Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link> </p>
                         <ProfileActions/>
+                        <Grids grids={grids}/>
                         <Experience experience={profile.experience}/>
                         <Education education={profile.education}/>
                         <div style = {{marginBottom: '60px'}}/>
@@ -79,12 +86,14 @@ Dashboard.propTypes = {
     getCurrentProfile: PropTypes.func.isRequired,
     deleteAccount: PropTypes.func.isRequired,
     auth:PropTypes.object.isRequired,
-    profile:PropTypes.object.isRequired
+    profile:PropTypes.object.isRequired,
+    grids:PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
     profile:state.profile,
+    grids:state.grids,
         auth:state.auth
 });
 
-export default connect(mapStateToProps, {getCurrentProfile, deleteAccount})(Dashboard);
+export default connect(mapStateToProps, {getCurrentProfile, deleteAccount, getGrids} )(Dashboard);

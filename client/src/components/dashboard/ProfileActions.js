@@ -13,6 +13,9 @@ const ProfileActions = () => {
             <Link to="/add-education" className="btn btn-light">
                 <i className="fas fa-graduation-cap text-info mr-1"></i>
                 Add Education</Link>
+            <Link to="/create-communication-board" className="btn btn-light">
+                <i className="fas fa-th text-info mr-1"></i>
+                Create Communication Board</Link>
         </div>
     )
 };

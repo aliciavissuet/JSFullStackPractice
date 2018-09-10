@@ -33,6 +33,14 @@ const AacGridSchema = new Schema({
         type:Date,
         default:Date.now
     },
+    rows:{
+        type:Number,
+        required:true
+    },
+    columns:{
+        type:Number,
+        required:true
+    },
     gridItems:[{
 
         text:{
