@@ -31,6 +31,7 @@ import Post from "./components/post/Post";
 import GridForm from "./components/grids/GridForm";
 import Grid from "./components/grid/Grid";
 import AddWord from "./components/grid/AddWord";
+import CommunicationBoardFeed from "./components/grids/CommunicationBoardFeed";
 
 //check for token
 if(localStorage.jwtToken){
@@ -68,6 +69,7 @@ class App extends Component {
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/profiles" component={Profiles} />
                     <Route exact path="/profile/:handle" component={Profile} />
+                    <Route exact path="/communication-board-feed" component={CommunicationBoardFeed} />
                     <Switch>
                         <PrivateRoute exact path="/dashboard" component={Dashboard}/>
                     </Switch>

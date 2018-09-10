@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import Spinner from '../common/Spinner';
 import {getGrid} from "../../actions/gridActions";
 import {Link} from 'react-router-dom';
-import SingleGrid from "../grids/SingleGrid";
+import SingleGrid from "./SingleGrid";
 
 
 class Grid extends React.Component {
@@ -44,23 +44,23 @@ class Grid extends React.Component {
                 <div className={"container"}>
                     <div className={"row"}>
                         <div className={"col-md-12"}>
-                            <Link to={"/feed"}
+                            <Link to={"/communication-board-feed"}
                                   className={"btn btn-light mb-3"}
                             >
-                                Back to feed
-                            </Link>
-                            <Link to="/add-word" className="btn btn-light">
-                                <i className="fas fa-graduation-cap text-info mr-1"></i>
-                                Add Word to Communication Board
+                                Communication Boards
                             </Link>
 
+                            <h2> {grid.title}</h2>
                             {gridContent}
+                            <Link to="/add-word" className="btn btn-light">
+                                <i className="fas fa-comment text-info mr-1"></i>
+                                Add Word to Communication Board
+                            </Link>
                         </div>
                     </div>
 
                 </div>
 
-                <h1>Grid</h1>
             </div>
         )
     }

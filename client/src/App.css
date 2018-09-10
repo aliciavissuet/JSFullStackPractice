@@ -38,3 +38,14 @@ img {
   color: #bbb !important;
 }
 
+.grid-item {
+  background:lightgray;
+  border: solid black 1px;
+  text-align: center;
+  height:80%;
+}
+.grid-item-config {
+  position:absolute;
+  top: 5px;
+  right: 17px;
+}

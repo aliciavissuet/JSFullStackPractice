@@ -13,8 +13,12 @@ class GridItem extends React.Component {
             lang:"en-US"
         });
         return (
-            <div>
-                <button onClick={this.handleClick} ><img src={this.props.image} />{this.props.text}</button>
+            <div className={"grid-item"}>
+
+                <i className="fas fa-edit text-info mr-1 grid-item-config"></i>
+                <img src={this.props.image} onClick={this.handleClick} style={{height:"100%"}}/>
+                <p>{this.props.text}</p>
+
             </div>
         )
     }

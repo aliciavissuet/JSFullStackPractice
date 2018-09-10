@@ -78,7 +78,7 @@ class Navbar extends React.Component {
                                     </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/AacGrids"> Browse Communication Boards
+                                    <Link className="nav-link" to="/communication-board-feed"> Browse Communication Boards
                                     </Link>
                                 </li>
                             </ul>
