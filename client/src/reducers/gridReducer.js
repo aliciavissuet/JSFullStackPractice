@@ -1,4 +1,4 @@
-import {ADD_GRID, GRID_LOADING, GET_GRIDS, GET_GRID, ADD_GRID_ITEM} from "../actions/types";
+import {ADD_GRID, GRID_LOADING, GET_GRIDS, GET_GRID, ADD_GRID_ITEM, DELETE_GRID} from "../actions/types";
 
 const initialState = {
     grids:[],
@@ -24,11 +24,11 @@ export default function(state = initialState, action) {
             return {
                 ...state, grids:[action.payload, ...state.grids]
             };
-        // case DELETE_POST:
-        //     return {
-        //         ...state,
-        //         posts: state.posts.filter(post => post._id !== action.payload)
-        //     };
+        case DELETE_GRID:
+            return {
+                ...state,
+                grids: state.grids.filter(grid => grid._id !== action.payload)
+            };
         case GET_GRID:
             return{
                 ...state,

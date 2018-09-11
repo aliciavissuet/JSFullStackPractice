@@ -21,7 +21,8 @@ class Landing extends React.Component {
                                 <div className="col-md-12 text-center">
                                     <h1 className="display-3 mb-4">AAC Online
                                     </h1>
-                                    <p className="lead"> create, find, use and talk about communication boards here.</p>
+                                    <p className="lead"> create, find, use and talk about communication boards here. </p>
+                                    <p><Link to="/grid/5b966cf97bb88e0014ff0d27"><a>Sample board</a></Link></p>
                                     <hr/>
                                     <Link to="/register" className="btn btn-lg btn-info mr-2">Sign Up</Link>
                                     <Link to="/login" className="btn btn-lg btn-light">Login</Link>

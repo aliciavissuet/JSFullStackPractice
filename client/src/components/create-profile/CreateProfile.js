@@ -120,13 +120,11 @@ class CreateProfile extends React.Component {
         //select options for status
         const options = [
             {label: '* Select Professional Status', value:0},
-            {label: 'Developer', value:'Developer'},
-            {label: 'Junior Developer', value:'Junior Developer'},
-            {label: 'Senior Developer', value:'Senior Developer'},
-            {label: 'Manager', value:'manager'},
-            {label: 'Student or Learning', value:'Student or Learning'},
-            {label: 'Instructor or Teacher', value:'Instructor or Teacher'},
-            {label: 'Intern', value:'Intern'},
+            {label: 'SLP', value:'SLP'},
+            {label: 'OT', value:'OT'},
+            {label: 'Teacher', value:'Teacher'},
+            {label: 'Parent', value:'Parent'},
+            {label: 'Student', value:'Student'},
             {label: 'Other', value:'Other'},
         ];
 

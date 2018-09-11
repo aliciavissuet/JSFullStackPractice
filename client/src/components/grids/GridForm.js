@@ -36,7 +36,7 @@ class GridForm extends React.Component {
             columns:this.state.columns
         };
 
-        this.props.addGrid(newGrid);
+        this.props.addGrid(newGrid, this.props.history);
         this.setState({title:'', description:''})
 
     }

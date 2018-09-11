@@ -26,7 +26,7 @@ class Dashboard extends React.Component {
         const {user} = this.props.auth;
         const {profile, loading} = this.props.profile;
         const {grids} = this.props.grids;
-        // const grids2 = grids.filter(grid => grid.user.id === user._id)
+        const grids2 = grids.filter(grid => grid.user === user.id);
 
 
         let dashboardContent;
@@ -39,7 +39,7 @@ class Dashboard extends React.Component {
                     <div>
                         <p className="lead text-muted"> Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link> </p>
                         <ProfileActions/>
-                        <Grids grids={grids}/>
+                        <Grids grids={grids2}/>
                         <Experience experience={profile.experience}/>
                         <Education education={profile.education}/>
                         <div style = {{marginBottom: '60px'}}/>

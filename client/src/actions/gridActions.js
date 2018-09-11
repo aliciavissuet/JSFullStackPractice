@@ -7,20 +7,26 @@ import {
     GET_GRID,
     GET_GRIDS,
     GRID_LOADING,
-    ADD_GRID_ITEM
+    ADD_GRID_ITEM,
+    DELETE_GRID
 
 } from './types';
 
 //add post
-export const addGrid = gridData => dispatch => {
+export const addGrid = (gridData, history) => dispatch => {
+
+    const doAfter = (res) => {
+        dispatch({
+            type:ADD_GRID,
+            payload: res.data
+        });
+        history.push(`/grid/${res.data._id}`)
+    };
+
     dispatch(clearErrors());
     axios
         .post('/api/aacgrids', gridData)
-        .then(res =>
-            dispatch({
-                type:ADD_GRID,
-                payload: res.data
-            })
+        .then(res => doAfter(res)
         )
         .catch(err =>
             dispatch({
@@ -48,37 +54,37 @@ export const getGrids = () => dispatch => {
         )
 };
 
-// //delete post
-// export const deletePost = id => dispatch => {
-//     axios
-//         .delete(`/api/posts/${id}`)
-//         .then(res =>
-//             dispatch({
-//                 type:DELETE_POST,
-//                 payload: id
-//             })
-//         )
-//         .catch(err =>
-//             dispatch({
-//                 type:GET_ERRORS,
-//                 payload:err.response.data
-//             })
-//         )
-// };
-// //add like
-// export const addLike = id => dispatch => {
-//     axios
-//         .post(`/api/posts/like/${id}`)
-//         .then(res =>
-//             dispatch(getPosts())
-//         )
-//         .catch(err =>
-//             dispatch({
-//                 type:GET_ERRORS,
-//                 payload:err.response.data
-//             })
-//         )
-// };
+//delete grid
+export const deleteGrid = id => dispatch => {
+    axios
+        .delete(`/api/aacgrids/${id}`)
+        .then(res =>
+            dispatch({
+                type:DELETE_GRID,
+                payload: id
+            })
+        )
+        .catch(err =>
+            dispatch({
+                type:GET_ERRORS,
+                payload:err.response.data
+            })
+        )
+};
+//add favorite
+export const addFavorite = id => dispatch => {
+    axios
+        .post(`/api/aacgrids/favorite/${id}`)
+        .then(res =>
+            dispatch(getGrids())
+        )
+        .catch(err =>
+            dispatch({
+                type:GET_ERRORS,
+                payload:err.response.data
+            })
+        )
+};
 // //remove like
 // export const removeLike = id => dispatch => {
 //     axios
@@ -113,7 +119,7 @@ export const getGrid = (id) => dispatch => {
 };
 
 //add grid item
-export const addGridItem = (gridId, gridItem) => dispatch => {
+export const addGridItem = (gridId, gridItem, history) => dispatch => {
     dispatch(clearErrors());
     axios
         .post(`api/aacgrids/gridItem/${gridId}`, gridItem)
@@ -123,6 +129,7 @@ export const addGridItem = (gridId, gridItem) => dispatch => {
                 payload: res.data
             })
         )
+        .then(res => history.push(`/grid/${gridId}`))
         .catch(err =>
             dispatch({
                 type:GET_ERRORS,

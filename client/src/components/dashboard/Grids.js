@@ -4,12 +4,12 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 import {Link} from "react-router-dom";
-// import {deleteEducation} from '../../actions/profileActions'
+import {deleteGrid} from "../../actions/gridActions";
 
 class Grids extends React.Component {
-    // onDeleteClick(id) {
-    //     this.props.deleteEducation(id);
-    // }
+    onDeleteClick(id) {
+        this.props.deleteGrid(id);
+    }
     render(){
 
 
@@ -26,9 +26,9 @@ class Grids extends React.Component {
                 </td>
                 <td><button
                     className={"btn btn-danger"}
-                    // onClick={this.onDeleteClick.bind(this, edu._id)}
+                    onClick={this.onDeleteClick.bind(this, grid._id)}
                 >
-                    Delete
+                    X
                 </button>
                 </td>
 
@@ -55,8 +55,7 @@ class Grids extends React.Component {
         )
     }
 }
-// Grids.propTypes = {
-//     // deleteEducation: PropTypes.func.isRequired
-// };
-// export default connect(null, {deleteEducation})(Education);
-export default Grids;
+Grids.propTypes = {
+    deleteGrid: PropTypes.func.isRequired
+};
+export default connect(null, {deleteGrid})(Grids);

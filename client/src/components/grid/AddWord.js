@@ -32,7 +32,7 @@ class AddWord extends React.Component {
             text: this.state.text,
             image: this.state.image,
         };
-        this.props.addGridItem(this.props.grids.grid._id, gridItem)
+        this.props.addGridItem(this.props.grids.grid._id, gridItem, this.props.history)
     }
     onChange(e){
         this.setState({[e.target.name]:e.target.value});

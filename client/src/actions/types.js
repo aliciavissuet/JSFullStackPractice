@@ -19,6 +19,7 @@ export const GRID_LOADING = 'GRID_LOADING';
 export const GET_GRID = 'GET_GRID';
 export const GET_GRIDS = 'GET_GRIDS';
 export const ADD_GRID_ITEM = 'ADD_GRID_ITEM';
+export const DELETE_GRID = 'DELETE_GRID';
 
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 

@@ -11,12 +11,15 @@ class Profiles extends React.Component {
     }
     render(){
         const {profiles, loading} = this.props.profile;
+
+
         let profileItems;
         if(profiles === null || loading){
             profileItems = <Spinner/>
         } else {
             if(profiles.length > 0){
-                profileItems = profiles.map(profile =>(
+                const profiles2 = profiles.filter(profile => profile.status === "SLP");
+                profileItems = profiles2.map(profile =>(
 
                     <ProfileItem key={profile.id} profile={profile}/>
                 ))
@@ -30,9 +33,9 @@ class Profiles extends React.Component {
                 <div className={"container"}>
                     <div className={"row"}>
                         <div className={"col-md-12"}>
-                            <h1 className={"display-4 text-center"}>Developer Profiles</h1>
+                            <h1 className={"display-4 text-center"}>Speech Pathologist Profiles</h1>
                             <p className={"lead text-center"}>
-                                Browse and connect with developers
+                                Browse and connect with SLPs
                             </p>
                             {profileItems}
                         </div>
