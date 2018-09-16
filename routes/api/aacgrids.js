@@ -51,6 +51,14 @@ router.post('/', passport.authenticate('jwt',{session:false}), (req,res)=> {
         columns:req.body.columns
 
     });
+    for(let i=0; i<100; i++) {
+        const newGridItem = {
+            text:"text here",
+            image:"https://www.jensenleisurefurniture.com/wp-content/themes/jensen-leisure/media/woocommerce/product-placeholder.png"
+        };
+        newGrid.gridItems.unshift(newGridItem);
+    }
+
 
     newGrid.save().then(grid => res.json(grid));
 });
@@ -106,24 +114,33 @@ router.post('/unfavorite/:grid_id', passport.authenticate('jwt', {session:false}
 });
 
 //@route POST api/aacgrids/gridItem/:grid_id
-//@desc Add grid item to grid
+//@desc edit grid item on grid
 //@access Private
 router.post('/gridItem/:grid_id', passport.authenticate('jwt', {session:false}), (req, res)=>{
-    // const {errors, isValid} = validateCommentInput(req.body);
-    //
-    // if(!isValid){
-    //     res.status(400).json(errors)
-    // }
+    const {errors, isValid} = validateCommentInput(req.body);
 
-    AacGrid.findById(req.params.grid_id)
-        .then(grid => {
-            const newGridItem = {
-                text:req.body.text,
-                image:req.body.image
-            };
-            grid.gridItems.unshift(newGridItem);
-            grid.save().then(grid => res.json(grid))
-        })
+    if(!isValid){
+        res.status(400).json(errors)
+    }
+
+    // AacGrid.findById(req.params.grid_id)
+    //     .then(grid => {
+    //         const newGridItem = {
+    //             text:req.body.text,
+    //             image:req.body.image
+    //         };
+    //         grid.gridItems = grid.gridItems.map( gridItem => (gridItem._id.toString() !== req.body.id)?gridItem : newGridItem);
+    //         grid.findById(req.body.id)
+    //         grid.save().then(grid => res.json(grid))
+    //     })
+    //     .catch(err => res.status(404).json({gridnotfound: 'no grid found'}));
+
+
+    AacGrid.update(
+        { _id: req.params.grid_id},
+        { $set: {['gridItems.'+req.body.id+'.text']: req.body.text, ['gridItems.'+req.body.id+'.image']: req.body.image} })
+        .then(() => AacGrid.findById(req.params.grid_id))
+        .then(grid => res.json(grid))
         .catch(err => res.status(404).json({gridnotfound: 'no grid found'}));
 });
 

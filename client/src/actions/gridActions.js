@@ -119,17 +119,16 @@ export const getGrid = (id) => dispatch => {
 };
 
 //add grid item
-export const addGridItem = (gridId, gridItem, history) => dispatch => {
+export const addGridItem = (gridId, gridItem) => dispatch => {
     dispatch(clearErrors());
     axios
-        .post(`api/aacgrids/gridItem/${gridId}`, gridItem)
+        .post(`/api/aacgrids/gridItem/${gridId}`, gridItem)
         .then(res =>
             dispatch({
                 type:ADD_GRID_ITEM,
                 payload: res.data
             })
         )
-        .then(res => history.push(`/grid/${gridId}`))
         .catch(err =>
             dispatch({
                 type:GET_ERRORS,
@@ -137,6 +136,7 @@ export const addGridItem = (gridId, gridItem, history) => dispatch => {
             })
         )
 };
+
 
 //
 // //add comment

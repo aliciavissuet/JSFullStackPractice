@@ -30,8 +30,8 @@ class SingleGrid extends React.Component {
 
     render(){
         const {grid, showActions} = this.props;
-        const {gridItems}=grid
-        const displayItems = createArray(grid.rows*grid.columns);
+        const {gridItems}=grid;
+        const displayItems = createArray(100);
         for(let i=0; i<displayItems.length; i++){
             displayItems[i]={text:"text here", image:"https://www.jensenleisurefurniture.com/wp-content/themes/jensen-leisure/media/woocommerce/product-placeholder.png"};
         }
@@ -40,19 +40,22 @@ class SingleGrid extends React.Component {
         }
 
         return (
+
         <div>
             <div className="card card-body mb-3">
                 <div className="row">
                     <div className={"container"}>
                         {createArray(grid.rows).map((n, i) =>
                             <div key={i}
-                                 className={"row"}
+                                 className={"row h-10"}
                             >
                                 {createArray(grid.columns).map((n, j) => (
                                     <div className={"col-md-2"}>
                                     <GridItem key={j}
-                                              text={displayItems[i*grid.columns+j].text}
-                                              image={displayItems[i*grid.columns+j].image}
+                                              text={displayItems[i*10+j].text}
+                                              image={displayItems[i*10+j].image}
+                                              index={i*10+j}
+
                                            />
                                     </div>
                                 )
@@ -76,6 +79,7 @@ class SingleGrid extends React.Component {
                     <div className="col-md-10">
                         <p><strong>{grid.title}</strong></p>
                         <p className="lead">{grid.description}</p>
+                    {/*TODO: make grids favoritable*/}
 
                         {/*{showActions  ? (<span>*/}
                         {/*<button type="button"*/}

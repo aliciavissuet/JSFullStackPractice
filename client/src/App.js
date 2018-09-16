@@ -13,6 +13,7 @@ import PrivateRoute from './components/common/PrivateRoute';
 
 import './App.css';
 
+
 import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
 import Footer from "./components/layout/Footer";
@@ -96,7 +97,7 @@ class App extends Component {
                         <PrivateRoute exact path="/create-communication-board" component={GridForm}/>
                     </Switch>
                     <Switch>
-                        <Route exact path="/grid/:id" component={Grid}/>
+                        <PrivateRoute exact path="/grid/:id" component={Grid}/>
                     </Switch>
                     <Switch>
                         <PrivateRoute exact path="/add-word" component={AddWord}/>

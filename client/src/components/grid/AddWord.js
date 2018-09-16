@@ -31,6 +31,7 @@ class AddWord extends React.Component {
         const gridItem = {
             text: this.state.text,
             image: this.state.image,
+            index:this.props.index
         };
         this.props.addGridItem(this.props.grids.grid._id, gridItem, this.props.history)
     }
@@ -89,4 +90,4 @@ const mapStateToProps = state => ({
     grids:state.grids,
     errors:state.errors
 });
-export default connect(mapStateToProps, {addGridItem})(AddWord);
+export default connect(mapStateToProps, {addGridItem: addGridItem})(AddWord);
