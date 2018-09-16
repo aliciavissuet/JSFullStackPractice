@@ -64,15 +64,18 @@ class GridItem extends React.Component {
     render(){
 
 
-
+        const {isAuthenticated, user} = this.props.auth;
+        const {grid} = this.props.grids;
 
         Jarvis.initialize ({
             lang:"en-US"
         });
         return (
             <div className={"grid-item"}>
+                {grid.user === user.id ? (
+                    <PopoverItem index={this.props.index} text={this.props.text} image={this.props.image}/>
+                ) : null}
 
-                <PopoverItem index={this.props.index} text={this.props.text} image={this.props.image}/>
                 <img src={this.props.image} onClick={this.handleClick} style={{height:"100%", maxHeight:"150px"}}/>
                 <p>{this.props.text}</p>
 
@@ -87,6 +90,7 @@ GridItem.propTypes ={
 };
 
 const mapStateToProps = state => ({
+    auth:state.auth,
     grids:state.grids,
     errors:state.errors
 });

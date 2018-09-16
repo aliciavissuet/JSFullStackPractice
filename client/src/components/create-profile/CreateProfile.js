@@ -150,7 +150,7 @@ class CreateProfile extends React.Component {
                                     value={this.state.handle}
                                     name="handle"
                                     error={errors.handle}
-                                    info="A unique handle for your profile URL. Your full name, company name, nickname"
+                                    info="A unique handle for your profile URL. For example, your full name, company name or nickname"
 
                                 />
                                 <SelectListGroup
@@ -191,12 +191,12 @@ class CreateProfile extends React.Component {
 
                                 />
                                 <TextFieldGroup
-                                    placeholder="* Skills"
+                                    placeholder="Skills"
                                     onChange={this.onChange}
                                     value={this.state.skills}
                                     name="skills"
                                     error={errors.skills}
-                                    info="Please use comma separated values (e.g., HTML,CSS,JavaScript,PHP"
+                                    info="specialities - separate skills with comma only (e.g., autism,apraxia,PROMPT,CAS"
 
                                 />
                                 <TextFieldGroup

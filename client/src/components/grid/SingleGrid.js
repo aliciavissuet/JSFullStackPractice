@@ -75,6 +75,7 @@ class SingleGrid extends React.Component {
                         </Link>
                         <br />
                         <p className="text-center">{grid.name}</p>
+
                     </div>
                     <div className="col-md-10">
                         <p><strong>{grid.title}</strong></p>

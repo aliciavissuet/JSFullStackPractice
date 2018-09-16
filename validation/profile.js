@@ -18,9 +18,7 @@ module.exports = function validateProfileInput(data){
     if(Validator.isEmpty(data.status)){
         errors.status = 'status is required';
     }
-    if(Validator.isEmpty(data.skills)){
-        errors.skills = 'skills field is required';
-    }
+
 
     if(!isEmpty(data.website)){
         if(!Validator.isURL(data.website)){

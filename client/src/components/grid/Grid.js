@@ -48,14 +48,14 @@ class Grid extends React.Component {
                                   className={"btn btn-light mb-3"}
                             >
                                 Communication Boards
+
                             </Link>
 
+
                             <h2> {grid.title}</h2>
+                            <small>Click image to hear word</small>
                             {gridContent}
-                            <Link to="/add-word" className="btn btn-light">
-                                <i className="fas fa-comment text-info mr-1"></i>
-                                Add Word to Communication Board
-                            </Link>
+
                         </div>
                     </div>
 

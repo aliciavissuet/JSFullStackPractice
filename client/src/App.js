@@ -71,6 +71,7 @@ class App extends Component {
                     <Route exact path="/profiles" component={Profiles} />
                     <Route exact path="/profile/:handle" component={Profile} />
                     <Route exact path="/communication-board-feed" component={CommunicationBoardFeed} />
+                    <Route exact path="/grid/:id" component={Grid}/>
 
                     <Switch>
                         <PrivateRoute exact path="/dashboard" component={Dashboard}/>
@@ -96,9 +97,9 @@ class App extends Component {
                     <Switch>
                         <PrivateRoute exact path="/create-communication-board" component={GridForm}/>
                     </Switch>
-                    <Switch>
-                        <PrivateRoute exact path="/grid/:id" component={Grid}/>
-                    </Switch>
+
+
+
                     <Switch>
                         <PrivateRoute exact path="/add-word" component={AddWord}/>
                     </Switch>
